@@ -244,7 +244,16 @@ const ENDPOINT =
   process.env.NODE_ENV === 'production'
     ? process.env.ENDPOINT
     : process.env.DEV_ENV
-app.use(notFound)
+
+app.use((req, res, next) => {
+  if (process.env.NODE_ENV === 'production') {
+    // This code runs only if environment is set to production
+    res.sendFile(path.join(__dirname1, '/frontend/build/index.html')) // This runs frontend and backend on the same port.
+  } else {
+    next(notFound)
+  }
+})
+
 app.use(errorHandler)
 const PORT = process.env.PORT || 5000
 const server = app.listen(
