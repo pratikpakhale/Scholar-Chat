@@ -140,11 +140,11 @@ app.get('/auth/logout', function (req, res) {
 
 let data = {}
 
-app.get('/profile', checkAuth, function (req, res) {
-  // The profile page
-  res.render('setPassword')
-  data = req.user
-})
+// app.get('/profile', checkAuth, function (req, res) {
+//   // The profile page
+//   res.render('setPassword')
+//   data = req.user
+// })
 
 app.get('/profile', checkAuth, function (req, res) {
   // The profile page
